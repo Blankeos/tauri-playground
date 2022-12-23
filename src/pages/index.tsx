@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import Image from "next/image";
 import reactLogo from "../assets/react.svg";
 import tauriLogo from "../assets/tauri.svg";
 import nextLogo from "../assets/next.svg";
 import MyComponent from "components/MyComponent";
+import DynamicCustomTitleBar from "@/components/DynamicCustomTitleBar";
+
+import { getTauriVersion } from "@tauri-apps/api/app";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -27,8 +30,20 @@ function App() {
     );
   }
 
+  const func = async () => {
+    const res = await getTauriVersion();
+    return res;
+  };
+
+  useEffect(() => {
+    func().then((res) => {
+      console.log(res);
+    });
+  }, []);
+
   return (
     <div className="container">
+      <DynamicCustomTitleBar />
       <h1>Welcome to Tauri!</h1>
 
       <div className="row">

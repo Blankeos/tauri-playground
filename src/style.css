@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  @apply bg-gray-800;
+}
+
+.container {
+  @apply bg-gray-600 min-h-screen min-w-full;
+}
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   font-family: "Inter", Helvetica, Arial, sans-serif;
 }
-
 :root {
   /* font-family: "Inter", Helvetica, Arial, sans-serif; */
   /* font-size: 16px; */
@@ -26,12 +33,7 @@ body {
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
-    background-color: #2f2f2f;
-  }
-  input,
-  button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
+    background: transparent;
   }
 }
 
@@ -53,6 +55,7 @@ body {
   width: 30px;
   height: 30px;
 }
+
 .titlebar-button:hover {
   background: #ee9209;
 }

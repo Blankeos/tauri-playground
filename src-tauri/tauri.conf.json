@@ -22,7 +22,8 @@
         "minimize": true,
         "unmaximize": true,
         "maximize": true,
-        "close": true
+        "close": true,
+        "startDragging": true
       }
     },
     "bundle": {
@@ -69,8 +70,11 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "tauri-playground",
-        "width": 800
+        "title": "Tauri Playground Application",
+        "width": 800,
+        "transparent": true,
+        "hiddenTitle": true,
+        "decorations": false
       }
     ]
   }
