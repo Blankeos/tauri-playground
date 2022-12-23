@@ -4,14 +4,27 @@ import Image from "next/image";
 import reactLogo from "../assets/react.svg";
 import tauriLogo from "../assets/tauri.svg";
 import nextLogo from "../assets/next.svg";
+import MyComponent from "components/MyComponent";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
 
+  // Sum
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState("");
+  const [sumMsg, setSumMsg] = useState("");
+
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     setGreetMsg(await invoke("greet", { name }));
+  }
+
+  async function sumInvoke() {
+    console.log("Invoking sum");
+    setSumMsg(
+      await invoke("my_sum", { num1: parseInt(num1), num2: parseInt(num2) })
+    );
   }
 
   return (
@@ -67,7 +80,26 @@ function App() {
             Greet
           </button>
         </div>
+        <div>
+          <input
+            id="greet-input"
+            onChange={(e) => {
+              setNum1(e.currentTarget.value);
+            }}
+          />
+          <input
+            id="greet-input"
+            onChange={(e) => {
+              setNum2(e.currentTarget.value);
+            }}
+          />
+          <button type="button" onClick={() => sumInvoke()}>
+            Sum
+          </button>
+          <p>{sumMsg}s</p>
+        </div>
       </div>
+      <MyComponent />
 
       <p>{greetMsg}</p>
     </div>

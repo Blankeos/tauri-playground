@@ -10,13 +10,13 @@ fn greet(name: &str) -> String {
 }
 
 #[tauri::command]
-fn sum(num1: &i32, num2: &i32) -> i32 {
+fn my_sum(num1: i32, num2: i32) -> i32 {
     num1 + num2
 }
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![greet, my_sum])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
